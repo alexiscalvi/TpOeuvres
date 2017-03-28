@@ -1,0 +1,9 @@
+h1, h2 {
+    text-align: center;
+}
+
+#artwork_image {
+    max-width: 800px;
+    max-height: 400px;
+    margin: 0 auto
+}
