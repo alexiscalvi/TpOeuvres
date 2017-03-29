@@ -82,14 +82,14 @@ public class UserController {
 
     @RequestMapping(value = "deleteAdherent", method = RequestMethod.GET)
     public ModelAndView deleteAdherent(HttpServletRequest request, HttpServletResponse response) {
-        int id = Integer.parseInt(request.getParameter("idAdherent"));
+        int id = Integer.parseInt(request.getParameter("id"));
         adherentDAO.delete(id);
         return adherentAction(request, response);
     }
 
     @RequestMapping(value = "editAdherent")
     public ModelAndView editAdherentAction(HttpServletRequest request, HttpServletResponse response) {
-        int idAdherent = Integer.parseInt(request.getParameter("idAdherent"));
+        int idAdherent = Integer.parseInt(request.getParameter("id"));
         Adherent adherent = adherentDAO.find(idAdherent);
         String prenom = request.getParameter("prenom");
         String nom = request.getParameter("nom");
