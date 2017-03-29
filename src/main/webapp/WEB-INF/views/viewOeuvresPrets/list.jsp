@@ -8,7 +8,7 @@
 <h1>Catalogue des oeuvres de prêt</h1>
 <br>
 <a class="btn btn-info" href="add">
-    <span class="glyphicon glyphicon-plus"></span> Ajout d'une Oeuvre
+    <span class="glyphicon glyphicon-plus"></span> Ajout d'une oeuvre
 </a>
 
 <div class="flashMessages">${flashMessages}</div>
@@ -45,10 +45,6 @@
 
 <script>
     $(function () {
-        $('#table_oeuvres').DataTable({
-            language: fr_language
-        });
-
         $('a[data-toggle=modal], button[data-toggle=modal]').click(function () {
             $('#idOeuvrepret').val($(this).data('id'));
         });
