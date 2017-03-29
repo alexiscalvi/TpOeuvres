@@ -20,9 +20,7 @@ import java.util.List;
 
 import static java.lang.Integer.parseInt;
 
-/**
- * Created by Alexis on 25/03/2017.
- */
+
 @Controller
 @RequestMapping("oeuvrevente/")
 public class OeuvreventeController {
