@@ -1,43 +1,18 @@
 package com.epul.oeuvres.controle;
 
-import com.epul.oeuvres.utilitaires.FlashMessage;
-
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.List;
 
-/**
- * Created by Florian on 29/03/2017.
- */
+
+@org.springframework.stereotype.Controller
+@RequestMapping("/")
 public class Controller
 {
-
-    private List<FlashMessage> flashMessages = new ArrayList<FlashMessage>();
-
-    protected List<FlashMessage> getFlashMessages() {
-        return flashMessages;
-    }
-
-    protected void addFlashMessages(FlashMessage flashMessage) {
-        this.flashMessages.add(flashMessage);
-    }
-
-    private String getFlashMessagesHtml() {
-        String html = "";
-        for (FlashMessage flashMessage :this.getFlashMessages()) {
-            html += flashMessage.buildHtml();
-        }
-        return html;
-    }
-
-    protected void clearFlashMessages() {
-        this.flashMessages.clear();
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public ModelAndView home(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        return new ModelAndView("index");
     }
 }
