@@ -5,23 +5,23 @@
 </jsp:include>
 
 <h1>Edition d'une oeuvre</h1>
-<form class="form-horizontal" name='identification' method="post" action="edit?id=${idOeuvrepret}">
+<form class="form-horizontal" name='identification' method="post" action="editPret?id=${id}">
     <div class="form-group">
         <label class="titre">Titre de l'oeuvre :</label>
         <input type="text" class="form-control" name="titre" id="titre" placeholder="Titre"
-               value="${txttitre}" required>*
+               value="${titre}" required>
     </div>
     <div class="form-group">
         <label for="idProprio">Proprietaire de l'oeuvre :</label>
         <select id="idProprio" name="idProprio">
-            <c:forEach items="${proprietaires}" var="proprio">
+            <c:forEach items="${proprios}" var="proprio">
                 <option value="${proprio.idProprietaire}">${proprio.nomComplet}</option>
             </c:forEach>
         </select>
     </div>
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-info">Modifier</button>
+            <button type="submit" class="btn">Modifier</button>
         </div>
     </div>
 </form>

@@ -7,42 +7,31 @@
       <div class="container">
         <h1>Détail d'une oeuvre</h1>
           <div class="row well">
-              <img id="artwork_image" src="http://www.celestialseasonings.com/sites/celestialseasonings.com/files/artwork/SleepytimeRoom.jpg" class="img-responsive" alt="Cinque Terre">
+              <img id="img_oeuvre" src="http://www.celestialseasonings.com/sites/celestialseasonings.com/files/artwork/SleepytimeRoom.jpg" class="img-responsive" alt="Cinque Terre">
               <br>
               <ul>
-                  <li><b>ID : </b>${oeuvrevente.idOeuvrevente}</li>
-                  <li><b>Titre : </b>${oeuvrevente.titreOeuvrevente}</li>
-                  <li><b>Etat : </b>${oeuvrevente.etatOeuvrevente}</li>
-                  <li><b>Prix : </b>${oeuvrevente.prixOeuvrevente}</li>
-                  <li><b>Propriétaire : </b>${oeuvrevente.proprietaire.nomComplet}</li>
+                  <li><b>ID : </b>${oeuvre.idOeuvrevente}</li>
+                  <li><b>Titre : </b>${oeuvre.titreOeuvrevente}</li>
+                  <li><b>Etat : </b>${oeuvre.etatOeuvrevente}</li>
+                  <li><b>Prix : </b>${oeuvre.prixOeuvrevente}</li>
+                  <li><b>Propriétaire : </b>${oeuvre.proprietaire.nomComplet}</li>
               </ul>
           </div>
-
-    <%-- JS --%>
-    <%-- Bootstrap --%>
-    <script type="javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <%-- End JS --%>
 
     <script language="JavaScript">
 
         function random_image() {
             var images = [];
-
-
             images[1] = "http://www.celestialseasonings.com/sites/celestialseasonings.com/files/artwork/BengelSpice.jpg";
             images[2] = "http://www.celestialseasonings.com/sites/celestialseasonings.com/files/artwork/CandyCaneLane.jpg";
             images[3] = "http://www.celestialseasonings.com/sites/celestialseasonings.com/files/artwork/RedZinger.jpg";
             images[4] = "http://www.celestialseasonings.com/sites/celestialseasonings.com/files/artwork/MintMagic.jpg";
             images[5] = "http://www.celestialseasonings.com/sites/celestialseasonings.com/files/artwork/TensionTamer.jpg";
             images[6] = "http://www.celestialseasonings.com/sites/celestialseasonings.com/files/artwork/SleepytimeRoom.jpg";
-
-            var ry = Math.floor(Math.random() * images.length)
+            var ry = Math.floor(Math.random() * images.length);
             if (ry == 0) ry = 1;
-
-            document.getElementById("artwork_image").src= images[ry] ;
-
+            $("#img_oeuvre").attr('src', images[ry]);
         }
-
         random_image();
     </script>
 

@@ -6,9 +6,9 @@
 
 <h1>Détail d'une oeuvre pret</h1>
 <br>
-<p>ID : ${oeuvrepret.idOeuvrepret}</p>
-<p>Titre : ${oeuvrepret.titreOeuvrepret}</p>
-<p>Propriétaire : ${oeuvrepret.proprietaire.nomComplet}</p>
+<p>ID : ${oeuvre.idOeuvrepret}</p>
+<p>Titre : ${oeuvre.titreOeuvrepret}</p>
+<p>Propriétaire : ${oeuvre.proprietaire.nomComplet}</p>
 
 <jsp:include page="../viewTemplates/footer.jsp">
     <jsp:param name="titre" value="Expo : Médiathèque De POLYTECH"/>

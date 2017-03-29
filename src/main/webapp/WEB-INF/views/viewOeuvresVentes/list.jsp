@@ -41,11 +41,11 @@
                     <a href="#" class="disabled btn btn-info" role="button"><span
                             class="glyphicon glyphicon-shopping-cart"></span></a>
                 </c:if>
-                <a href="detail?id=${oeuvre.idOeuvrevente}"
+                <a href="detailVente?id=${oeuvre.idOeuvrevente}"
                    class="btn btn-warning" role="button"><span class="glyphicon glyphicon-eye-open"></span></a>
-                <a href="edit?id=${oeuvre.idOeuvrevente}"
+                <a href="editVente?id=${oeuvre.idOeuvrevente}"
                    class="btn btn-success" role="button"><span class="glyphicon glyphicon-pencil"></span></a>
-                <a href="delete?id=${oeuvre.idOeuvrevente}"
+                <a href="deleteVente?id=${oeuvre.idOeuvrevente}"
                    class="btn btn-danger" role="button"><span class="glyphicon glyphicon-remove"></span></a>
             </td>
         </tr>
@@ -54,15 +54,13 @@
 </table>
 
 <div class="container">
-    <!-- Modal -->
-    <div class="modal fade" id="reservationModal" role="dialog">
+    <div class="modal fade" role="dialog" id="reservation">
         <form class="form-horizontal" action="liste" method="post">
             <div class="modal-dialog">
-
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Réservation d'une oeuvre destinée à la vente</h4>
+                        <h1 class="modal-title">Réservation</h1>
                     </div>
                     <div class="modal-body container">
                         <div class="form-group">
