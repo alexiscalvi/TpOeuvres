@@ -12,11 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * Created by Lucas on 29/03/2017.
- *
  */
-@RequestMapping("adherent/")
+@RequestMapping("user/")
 @Controller
-public class AdherentController  {
+public class AdherentController {
     private final AdherentDAO adherentDAO;
 
     public AdherentController() {
@@ -24,10 +23,9 @@ public class AdherentController  {
         this.adherentDAO = new AdherentDAO();
     }
 
-    @RequestMapping(value = "liste", method = RequestMethod.GET)
+    @RequestMapping(value = "adherent", method = RequestMethod.GET)
     public ModelAndView liste(HttpServletRequest request, HttpServletResponse response) {
-        System.out.println(("here"));
-        request.setAttribute("mesAdherents", adherentDAO.findAll());
+        request.setAttribute("adherents", adherentDAO.findAll());
         return new ModelAndView("adherent/liste");
     }
 
@@ -51,6 +49,7 @@ public class AdherentController  {
         }
 
     }
+
     @RequestMapping(value = "add")
     public ModelAndView add(HttpServletRequest request, HttpServletResponse response) {
         System.out.println("je passe par la");
