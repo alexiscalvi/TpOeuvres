@@ -5,13 +5,11 @@
 </jsp:include>
 <h1>
     Liste des oeuvres
-    <br>
-    <a class="btn btn-info" href="add">
-        Ajout d'une nouvelle Oeuvre
-    </a>
 </h1>
-<div class="flashMessages">${flashMessages}</div>
 
+<a class="btn btn-info" href="add">
+    Ajout d'une nouvelle Oeuvre
+</a>
 <table id="table_oeuvres">
     <thead>
     <tr>

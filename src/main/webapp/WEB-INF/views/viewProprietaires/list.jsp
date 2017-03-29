@@ -6,7 +6,6 @@
 </jsp:include>
 <h1>Liste des propriétaires </h1>
 <a class="btn btn-success" href="add" role="button">Ajouter un propriétaire</a>
-<div class="flashMessages">${flashMessages}</div>
 <table id="tablePropriétaires">
     <thead>
     <th>Numero</th>

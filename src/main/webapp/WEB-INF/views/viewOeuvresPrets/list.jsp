@@ -11,8 +11,6 @@
     <span class="glyphicon glyphicon-plus"></span> Ajout d'une oeuvre
 </a>
 
-<div class="flashMessages">${flashMessages}</div>
-
 <table id="table_oeuvres">
     <thead>
     <tr>
