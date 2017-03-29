@@ -2,7 +2,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 		 pageEncoding="UTF-8" %>
-<jsp:include page="../header.jsp">
+<jsp:include page="../viewTemplates/header.jsp">
 	<jsp:param name="titre" value="Affichage adhérants"/>
 </jsp:include>
 
@@ -48,6 +48,6 @@
 		</tbody>
 	</table>
 
-<jsp:include page="../footer.jsp">
+<jsp:include page="../viewTemplates/footer.jsp">
 	<jsp:param name="titre" value="Expo : Médiathèque De POLYTECH"/>
 </jsp:include>

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
-<jsp:include page="../header.jsp">
+<jsp:include page="../viewTemplates/header.jsp">
     <jsp:param name="titre" value="Ajout d'un propriétaire"/>
 </jsp:include>
     <h2>Ajout d'un propriétaire</h2>
@@ -23,6 +23,6 @@
             </div>
         </div>
     </form>
-<jsp:include page="../footer.jsp">
+<jsp:include page="../viewTemplates/footer.jsp">
     <jsp:param name="titre" value="Expo : Médiathèque De POLYTECH"/>
 </jsp:include>

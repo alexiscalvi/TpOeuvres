@@ -8,7 +8,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<jsp:include page="../header.jsp">
+<jsp:include page="../viewTemplates/header.jsp">
     <jsp:param name="titre" value="Liste des propriétaires"/>
 </jsp:include>
 
@@ -47,6 +47,6 @@
         </c:forEach>
     </table>
 
-<jsp:include page="../footer.jsp">
+<jsp:include page="../viewTemplates/footer.jsp">
     <jsp:param name="titre" value="Expo : Médiathèque De POLYTECH"/>
 </jsp:include>

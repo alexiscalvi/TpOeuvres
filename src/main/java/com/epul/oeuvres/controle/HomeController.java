@@ -16,11 +16,11 @@ public class HomeController {
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView home(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		return new ModelAndView("home");
+		return new ModelAndView("index");
 	}
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public ModelAndView homeBis(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		return new ModelAndView("home");
+		return new ModelAndView("index");
 	}
 
 }

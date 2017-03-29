@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<jsp:include page="../header.jsp">
+<jsp:include page="../viewTemplates/header.jsp">
     <jsp:param name="titre" value="Edition d'un propriétaire"/>
 </jsp:include>
     <h2>Modifier un propriétaire</h2>
@@ -35,6 +35,6 @@
         </div>
     </form>
 
-<jsp:include page="../footer.jsp">
+<jsp:include page="../viewTemplates/footer.jsp">
     <jsp:param name="titre" value="Expo : Médiathèque De POLYTECH"/>
 </jsp:include>

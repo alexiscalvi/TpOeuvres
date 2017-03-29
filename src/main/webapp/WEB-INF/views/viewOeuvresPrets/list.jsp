@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<jsp:include page="../header.jsp">
+<jsp:include page="../viewTemplates/header.jsp">
     <jsp:param name="titre" value="Catalogue des oeuvres prêt"/>
 </jsp:include>
 
@@ -58,6 +58,6 @@
         </c:forEach>
         </tbody>
     </table>
-<jsp:include page="../footer.jsp">
+<jsp:include page="../viewTemplates/footer.jsp">
     <jsp:param name="titre" value="Expo : Médiathèque De POLYTECH"/>
 </jsp:include>
