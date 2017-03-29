@@ -24,7 +24,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/index"><span class="glyphicon glyphicon-home"></span> Médiathèque</a>
+                <a class="navbar-brand" href="/"><span class="glyphicon glyphicon-home"></span> Médiathèque</a>
             </div>
             <div class="collapse navbar-collapse" id="navbar-collapse-target">
                 <ul class="nav navbar-nav navbar-right">

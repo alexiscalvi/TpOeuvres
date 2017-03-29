@@ -26,8 +26,8 @@
             <td>${item.prenomAdherent}</td>
             <td>${item.villeAdherent}</td>
             <td>
-                <a href="edit?idAdherent=${item.idAdherent}"><span class="glyphicon glyphicon-pencil"></span></a>
-                <a href="delete?idAdherent=${item.idAdherent}"><span class="glyphicon glyphicon-remove"></span></a>
+                <a href="editAdherent?idAdherent=${item.idAdherent}"><span class="glyphicon glyphicon-pencil"></span></a>
+                <a href="deleteAdherent?idAdherent=${item.idAdherent}"><span class="glyphicon glyphicon-remove"></span></a>
             </td>
         </tr>
     </c:forEach>

@@ -12,10 +12,10 @@
 <p>Sélectionnez la fonctionnalité voulue :</p>
 <div class="row">
     <ul>
-        <li><a href="viewAdherents/list">Lister les adhérents</a></li>
-        <li><a href="viewProprietaires/list">Lister les propriétaires</a></li>
-        <li><a href="viewOeuvresVentes/list">Consulter le catalogue des Oeuvres à vendre</a></li>
-        <li><a href="viewOeuvresPrets/list">Consulter le catalogue des Oeuvres à prêter</a></li>
+        <li><a href="user/adherents">Lister les adhérents</a></li>
+        <li><a href="user/proprios">Lister les propriétaires</a></li>
+        <li><a href="oeuvre/vente">Consulter le catalogue des Oeuvres à vendre</a></li>
+        <li><a href="oeuvre/pret">Consulter le catalogue des Oeuvres à prêter</a></li>
         <li><a href="#" onclick="close_window();">Quitter</a></li>
     </ul>
 </div>
