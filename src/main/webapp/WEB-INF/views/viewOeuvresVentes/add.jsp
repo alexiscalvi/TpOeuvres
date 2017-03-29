@@ -29,8 +29,8 @@
             <label class="control-label col-sm-2">Proprietaire de l'oeuvre :</label>
             <div class="col-sm-10">
                 <select id="idProprietaire" name="idProprietaire">
-                    <c:forEach items="${proprietaires}" var="proprietaire">
-                        <option value="${proprietaire.idProprietaire}">${proprietaire.nomComplet}</option>
+                    <c:forEach items="${proprietaires}" var="proprio">
+                        <option value="${proprio.idProprietaire}">${proprio.nomComplet}</option>
                     </c:forEach>
                 </select>
             </div>

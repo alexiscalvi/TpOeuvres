@@ -2,9 +2,14 @@
 <jsp:include page="viewTemplates/header.jsp">
     <jsp:param name="titre" value="Expo : Médiathèque De POLYTECH"/>
 </jsp:include>
-<h1>Médiathèque de POLYTECH ! </h1>
+<br>
+<h1>Médiathèque de POLYTECH !</h1>
 <h2>Gestion de l'exposition 2016</h2>
-<h3>Sélectionnez la fonctionnalité voulue :</h3>
+<br>
+<br>
+<br>
+<br>
+<p>Sélectionnez la fonctionnalité voulue :</p>
 <div class="row">
     <ul>
         <li><a href="viewAdherents/list">Lister les adhérents</a></li>
