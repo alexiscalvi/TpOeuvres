@@ -8,12 +8,10 @@
     <title>${param.titre}</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="../resources/style/style.css">
+    <link rel="stylesheet" type="text/css" href="../styles/style.css">
 </head>
-<script src="<c:url value="../resources/script/main.js"></c:url>"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
 <body>
     <nav class="navbar navbar-default" role="navigation">
         <div class="container">
@@ -28,8 +26,8 @@
             </div>
             <div class="collapse navbar-collapse" id="navbar-collapse-target">
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="dropdown"><a href="/viewProprietaires/list">Propriétaires</a></li>
-                    <li class="dropdown"><a href="/viewAdherents/list">Adhérents</a></li>
+                    <li class="dropdown"><a href="/user/proprio">Propriétaires</a></li>
+                    <li class="dropdown"><a href="/user/adherent">Adhérents</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                             Oeuvres<span class="caret"></span></a>

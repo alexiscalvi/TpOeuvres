@@ -4,7 +4,7 @@
     <jsp:param name="titre" value="Ajout d'un propriétaire"/>
 </jsp:include>
 <h2>Ajout d'un propriétaire</h2>
-<form class="form-horizontal" name='identification' method="post" action="add">
+<form class="form-horizontal" name='identification' method="post" action="/user/addProprio">
     <div class="form-group">
         <label class="control-label col-sm-2" for="prenom">Prenom :</label>
         <div class="col-sm-10">

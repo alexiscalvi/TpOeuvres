@@ -5,7 +5,7 @@
 </jsp:include>
 
 <h1>Ajout d'un adhérent</h1>
-<form class="form-horizontal" name='identification' method="post" action="add">
+<form class="form-horizontal" name='identification' method="post" action="/user/addAdherent">
     <div class="form-group">
         <label class="control-label col-sm-2" for="prenom">Prenom :</label>
         <div class="col-sm-10">

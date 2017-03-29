@@ -5,8 +5,8 @@
     <jsp:param name="titre" value="Liste des propriétaires"/>
 </jsp:include>
 <h1>Liste des propriétaires </h1>
-<a class="btn btn-success" href="add" role="button">Ajouter un propriétaire</a>
-<table id="tablePropriétaires">
+<a class="btn btn-success" href="/user/addProprio" role="button">Ajouter un propriétaire</a>
+<table id="table_propriétaires">
     <thead>
     <th>Numero</th>
     <th>Nom</th>
