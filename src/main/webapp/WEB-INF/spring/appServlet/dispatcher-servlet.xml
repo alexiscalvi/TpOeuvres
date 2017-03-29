@@ -17,7 +17,7 @@ http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
     </bean>
     <bean name="oeuvrevente/*" class="com.epul.oeuvres.controle.OeuvreventeController">
     </bean>
-    <bean name="proprietaire/*" class="com.epul.oeuvres.controle.ProprietaireController">
+    <bean name="proprietaire/*" class="com.epul.oeuvres.controle.UserController">
     </bean>
 
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver" >        
