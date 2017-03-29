@@ -12,6 +12,10 @@ import java.util.List;
 
 public class OeuvreventeDAO extends DAO{
 
+     /*
+    builder
+     */
+
     private Oeuvrevente buildDomainObject(ResultSet ajout) throws SQLException, MonException {
         Oeuvrevente oeuvrevente = new Oeuvrevente();
         oeuvrevente.setIdOeuvrevente( ajout.getInt( "id_oeuvrevente" ) );
@@ -65,6 +69,9 @@ public class OeuvreventeDAO extends DAO{
         return false;
     }
 
+ /*
+    mise a jour d'un élément
+     */
 
     public boolean update( Oeuvrevente oeuvreVente ) {
         try {
@@ -83,23 +90,9 @@ public class OeuvreventeDAO extends DAO{
         }
         return false;
     }
-
-    public List<Oeuvrevente> get() {
-        List<Oeuvrevente> listOeuvresVente = new ArrayList<Oeuvrevente>();
-        try {
-            Statement statement = connection.createStatement();
-            ResultSet res = statement.executeQuery( "select * from oeuvrevente" );
-            while( res.next() ) {
-                listOeuvresVente.add(this.buildDomainObject(res));
-            }
-            res.close();
-            statement.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return listOeuvresVente;
-    }
-
+    /*
+    recuperer un seul élément
+     */
     public Oeuvrevente get(int idOeuvreVente) {
         Oeuvrevente oeuvreVente = null;
         try {
@@ -117,6 +110,27 @@ public class OeuvreventeDAO extends DAO{
         }
         return oeuvreVente;
     }
+
+    /*
+    recuperer tout les elements
+     */
+
+    public List<Oeuvrevente> get() {
+        List<Oeuvrevente> listOeuvresVente = new ArrayList<Oeuvrevente>();
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet res = statement.executeQuery( "select * from oeuvrevente" );
+            while( res.next() ) {
+                listOeuvresVente.add(this.buildDomainObject(res));
+            }
+            res.close();
+            statement.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return listOeuvresVente;
+    }
+
 
 
 }

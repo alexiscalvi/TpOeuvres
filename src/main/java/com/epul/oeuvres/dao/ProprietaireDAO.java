@@ -13,6 +13,10 @@ import java.util.List;
 public class ProprietaireDAO extends DAO {
 
 
+     /*
+    builder
+     */
+
     private Proprietaire buildDomainObject(ResultSet ajout) throws SQLException, MonException {
         Proprietaire proprietaire = new Proprietaire();
         proprietaire.setIdProprietaire( ajout.getInt( "id_proprietaire" ) );
@@ -22,6 +26,63 @@ public class ProprietaireDAO extends DAO {
         return proprietaire;
     }
 
+    /*
+     Ajout d'un proprietaire a la db
+      */
+    public boolean add(Proprietaire proprietaire) {
+        try {
+            String query = "insert into proprietaire (prenom_proprietaire, nom_proprietaire) values (?,?)";
+            PreparedStatement ps = connection.prepareStatement( query );
+            ps.setString( 1, proprietaire.getPrenomProprietaire());
+            ps.setString( 2, proprietaire.getNomProprietaire());
+            ps.executeUpdate();
+            ps.close();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+
+    /*
+    Suppression d'un proprietaire dans la db
+     */
+
+    public boolean delete(int idProprietaire) {
+        try {
+            String query = "delete from proprietaire where id_proprietaire=?";
+            PreparedStatement ps = connection.prepareStatement(query);
+            ps.setInt(1, idProprietaire);
+            ps.executeUpdate();
+            ps.close();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+
+    /*
+    update la db avec les nouvelles données du proprietaire
+     */
+    public boolean update( Proprietaire proprietaire ) {
+
+        try {
+            String query = "update proprietaire set prenom_proprietaire=?, nom_proprietaire=? where id_proprietaire=?";
+            PreparedStatement ps = connection.prepareStatement( query );
+            ps.setString( 1, proprietaire.getPrenomProprietaire());
+            ps.setString( 2, proprietaire.getNomProprietaire());
+            ps.setString( 3, proprietaire.getIdProprietaire()+"");
+            ps.executeUpdate();
+            ps.close();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
     /*
     get(int) revoie l'objet Proprietaire de l'id correspondant
      */
@@ -69,59 +130,7 @@ public class ProprietaireDAO extends DAO {
         return listProprietaires;
     }
 
-    /*
-    update la db avec les nouvelles données du proprietaire
-     */
-    public boolean update( Proprietaire proprietaire ) {
 
-        try {
-            String query = "update proprietaire set prenom_proprietaire=?, nom_proprietaire=? where id_proprietaire=?";
-            PreparedStatement ps = connection.prepareStatement( query );
-            ps.setString( 1, proprietaire.getPrenomProprietaire());
-            ps.setString( 2, proprietaire.getNomProprietaire());
-            ps.setString( 3, proprietaire.getIdProprietaire()+"");
-            ps.executeUpdate();
-            ps.close();
-            return true;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
 
-   /*
-   Ajout d'un proprietaire a la db
-    */
-    public boolean add(Proprietaire proprietaire) {
-        try {
-            String query = "insert into proprietaire (prenom_proprietaire, nom_proprietaire) values (?,?)";
-            PreparedStatement ps = connection.prepareStatement( query );
-            ps.setString( 1, proprietaire.getPrenomProprietaire());
-            ps.setString( 2, proprietaire.getNomProprietaire());
-            ps.executeUpdate();
-            ps.close();
-            return true;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
 
-    /*
-    Suppression d'un proprietaire dans la db
-     */
-
-    public boolean delete(int idProprietaire) {
-        try {
-            String query = "delete from proprietaire where id_proprietaire=?";
-            PreparedStatement ps = connection.prepareStatement(query);
-            ps.setInt(1, idProprietaire);
-            ps.executeUpdate();
-            ps.close();
-            return true;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
 }

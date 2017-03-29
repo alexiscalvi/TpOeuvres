@@ -13,6 +13,10 @@ import java.util.List;
 
 public class OeuvrepretDAO extends DAO{
 
+     /*
+    builder
+     */
+
     private Oeuvrepret buildDomainObject(ResultSet row) throws SQLException, MonException {
         Oeuvrepret oeuvrepret = new Oeuvrepret();
         oeuvrepret.setIdOeuvrepret( row.getInt( "id_oeuvrepret" ) );
@@ -21,6 +25,9 @@ public class OeuvrepretDAO extends DAO{
         return oeuvrepret;
     }
 
+    /*
+    Ajout a la db
+ */
     public boolean add(Oeuvrepret oeuvrePret) {
         try {
             String query = "insert into oeuvrepret (titre_oeuvrepret, id_proprietaire) values (?,?)";
@@ -36,6 +43,10 @@ public class OeuvrepretDAO extends DAO{
         return false;
     }
 
+    /*
+    Suppression de l'element dans la db
+     */
+
     public boolean delete( int idOeuvrePret ) {
         try {
             String query = "delete from oeuvrepret where id_oeuvrepret=?";
@@ -49,6 +60,11 @@ public class OeuvrepretDAO extends DAO{
         }
         return false;
     }
+
+     /*
+    mise a jour d'un élément
+     */
+
 
     public boolean update( Oeuvrepret oeuvrePret ) {
         try {
@@ -65,6 +81,31 @@ public class OeuvrepretDAO extends DAO{
         }
         return false;
     }
+
+    /*
+  recuperer un seul élément
+   */
+    public Oeuvrepret get(int idOeuvrePret) {
+        Oeuvrepret oeuvrePret = null;
+        try {
+            String query = "select * from oeuvrepret where id_oeuvrepret=?";
+            PreparedStatement ps = connection.prepareStatement( query );
+            ps.setInt( 1, idOeuvrePret);
+            ResultSet res = ps.executeQuery();
+            if (res.first()) {
+                oeuvrePret = this.buildDomainObject(res);
+            }
+            ps.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return oeuvrePret;
+    }
+
+    /*
+    recuperer tout les elements
+     */
+
 
     public List<Oeuvrepret> get() {
         List<Oeuvrepret> listOeuvresPret = new ArrayList<Oeuvrepret>();
@@ -83,22 +124,6 @@ public class OeuvrepretDAO extends DAO{
         return listOeuvresPret;
     }
 
-    public Oeuvrepret get(int idOeuvrePret) {
-        Oeuvrepret oeuvrePret = null;
-        try {
-            String query = "select * from oeuvrepret where id_oeuvrepret=?";
-            PreparedStatement ps = connection.prepareStatement( query );
-            ps.setInt( 1, idOeuvrePret);
-            ResultSet res = ps.executeQuery();
-            if (res.first()) {
-                oeuvrePret = this.buildDomainObject(res);
-            }
-            ps.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return oeuvrePret;
-    }
 
 
 }

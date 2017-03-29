@@ -11,32 +11,81 @@ import com.epul.oeuvres.meserreurs.MonException;
 
 public class AdherentDAO extends DAO{
 
-    private Adherent buildDomainObject(ResultSet row) throws SQLException, MonException {
+    /*
+    builder
+     */
+
+    private Adherent buildDomainObject(ResultSet ajout) throws SQLException, MonException {
         Adherent adherent = new Adherent();
-        adherent.setIdAdherent( row.getInt( "id_adherent" ) );
-        adherent.setNomAdherent( row.getString( "nom_adherent" ) );
-        adherent.setPrenomAdherent( row.getString( "prenom_adherent" ) );
-        adherent.setVilleAdherent( row.getString( "ville_adherent" ) );
+        adherent.setIdAdherent( ajout.getInt( "id_adherent" ) );
+        adherent.setNomAdherent( ajout.getString( "nom_adherent" ) );
+        adherent.setPrenomAdherent( ajout.getString( "prenom_adherent" ) );
+        adherent.setVilleAdherent( ajout.getString( "ville_adherent" ) );
         return adherent;
     }
 
-
-    public List<Adherent> get() {
-        List<Adherent> listAdherents = new ArrayList<Adherent>();
+/*
+    Ajout a la db
+ */
+    public boolean add(Adherent adherent) {
         try {
-            Statement statement = connection.createStatement();
-            String query = "select * from adherent";
-            ResultSet res = statement.executeQuery( query );
-            while( res.next() ) {
-                listAdherents.add(this.buildDomainObject(res));
-            }
-            res.close();
-            statement.close();
-        } catch (Exception e) {
+            String query = "insert into adherent (nom_adherent, prenom_adherent, ville_adherent) values (?,?,?)";
+            PreparedStatement ps = connection.prepareStatement( query );
+            ps.setString( 1, adherent.getNomAdherent());
+            ps.setString( 2, adherent.getPrenomAdherent());
+            ps.setString( 3, adherent.getVilleAdherent());
+            ps.executeUpdate();
+            ps.close();
+            return true;
+        } catch (SQLException e) {
             e.printStackTrace();
         }
-        return listAdherents;
+        return false;
     }
+
+    /*
+    Suppression de l'element dans la db
+     */
+
+    public boolean delete(int idAdherent) {
+        try {
+            String query = "delete from adherent where id_adherent=?";
+            PreparedStatement ps = connection.prepareStatement(query);
+            ps.setInt(1, idAdherent);
+            ps.executeUpdate();
+            ps.close();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+
+    }
+
+    /*
+    mise a jour d'un élément
+     */
+
+    public boolean update( Adherent adherent ) {
+        try {
+            String query = "update adherent set nom_adherent=?, prenom_adherent=?, ville_adherent=?  where id_adherent=?";
+            PreparedStatement ps = connection.prepareStatement( query );
+            ps.setString( 1, adherent.getNomAdherent());
+            ps.setString( 2, adherent.getPrenomAdherent());
+            ps.setString( 3, adherent.getVilleAdherent());
+            ps.setString( 4, adherent.getIdAdherent() + "");
+            ps.executeUpdate();
+            ps.close();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    /*
+    recuperer un seul élément
+     */
 
     public Adherent get(int idAdherent) {
         Adherent adherent = null;
@@ -55,53 +104,30 @@ public class AdherentDAO extends DAO{
         return adherent;
     }
 
-    public boolean add(Adherent adherent) {
+/*
+    recuperer tout les elements
+     */
+
+    public List<Adherent> get() {
+        List<Adherent> listAdherents = new ArrayList<Adherent>();
         try {
-            String query = "insert into adherent (nom_adherent, prenom_adherent, ville_adherent) values (?,?,?)";
-            PreparedStatement ps = connection.prepareStatement( query );
-            ps.setString( 1, adherent.getNomAdherent());
-            ps.setString( 2, adherent.getPrenomAdherent());
-            ps.setString( 3, adherent.getVilleAdherent());
-            ps.executeUpdate();
-            ps.close();
-            return true;
-        } catch (SQLException e) {
+            Statement statement = connection.createStatement();
+            String query = "select * from adherent";
+            ResultSet res = statement.executeQuery( query );
+            while( res.next() ) {
+                listAdherents.add(this.buildDomainObject(res));
+            }
+            res.close();
+            statement.close();
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        return false;
+        return listAdherents;
     }
 
-    public boolean delete(int idAdherent) {
-        try {
-            String query = "delete from adherent where id_adherent=?";
-            PreparedStatement ps = connection.prepareStatement(query);
-            ps.setInt(1, idAdherent);
-            ps.executeUpdate();
-            ps.close();
-            return true;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return false;
 
-    }
 
-    public boolean update( Adherent adherent ) {
-        try {
-            String query = "update adherent set nom_adherent=?, prenom_adherent=?, ville_adherent=?  where id_adherent=?";
-            PreparedStatement ps = connection.prepareStatement( query );
-            ps.setString( 1, adherent.getNomAdherent());
-            ps.setString( 2, adherent.getPrenomAdherent());
-            ps.setString( 3, adherent.getVilleAdherent());
-            ps.setString( 4, adherent.getIdAdherent() + "");
-            ps.executeUpdate();
-            ps.close();
-            return true;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
+
 
 
 }
