@@ -3,7 +3,7 @@
     <jsp:param name="titre" value="Edition d'un adhérant"/>
 </jsp:include>
 <h1>Editer un adherent</h1>
-<form class="form-horizontal" method="post" action="/user/editProprio">
+<form class="form-horizontal" method="post" action="/user/editAdherent">
     <div class="form-group">
         <div class="col-sm-10">
             <input type="hidden" class="form-control" name="id" id="id" value="${adherent.idAdherent}">
