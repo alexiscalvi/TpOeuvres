@@ -8,20 +8,27 @@ import com.epul.oeuvres.persistance.*;
 
 public class Service {
 
-	// Mise à jour des caractéristiques d'un adhérent
-	// Le booleen indique s'il s'agit d'un nouvel adhérent, auquel cas on fait
-	// une création
+	// Mise ï¿½ jour des caractï¿½ristiques d'un adhï¿½rent
+	// Le booleen indique s'il s'agit d'un nouvel adhï¿½rent, auquel cas on fait
+	// une crï¿½ation
 
-	public void insertAdherent(Adherent unAdherent) throws MonException {
+	public void addAdherent(Adherent adherent) throws MonException {
 		String mysql;
 
-		DialogueBd unDialogueBd = DialogueBd.getInstance();
+		DialogueBd dialogue = DialogueBd.getInstance();
 		try {
-			mysql = "insert into adherent  (nom_adherent,prenom_adherent,ville_adherent)  " + "values ('"
-					+ unAdherent.getNomAdherent();
-			mysql += "'" + ",'" + unAdherent.getPrenomAdherent() + "','" + unAdherent.getVilleAdherent() + "')";
+			mysql = "insert into adherent  (nom_adherent,prenom_adherent,ville_adherent)";
+			mysql += "  values ('";
+			mysql += adherent.getNomAdherent();
+			mysql += "'";
+			mysql += ",'";
+			mysql += adherent.getPrenomAdherent();
+			mysql += "','";
+			mysql += adherent.getVilleAdherent();
+			mysql += "')";
 
-			unDialogueBd.insertionBD(mysql);
+			dialogue.insertionBD(mysql);
+
 		} catch (MonException e) {
 			throw e;
 		}
@@ -31,10 +38,10 @@ public class Service {
 	}
 
 	// gestion des adherents
-	// Consultation d'un adhérent par son numéro
-	// Fabrique et renvoie un objet adhérent contenant le résultat de la requête
+	// Consultation d'un adhï¿½rent par son numï¿½ro
+	// Fabrique et renvoie un objet adhï¿½rent contenant le rï¿½sultat de la requï¿½te
 	// BDD
-	public Adherent consulterAdherent(int numero) throws MonException {
+	public Adherent getAdherent(int numero) throws MonException {
 		
 		 Map mParams = new HashMap();
 	     Map mParam;
@@ -56,9 +63,9 @@ public class Service {
 		}
 	}
 
-	// Consultation des adhérents
-	// Fabrique et renvoie une liste d'objets adhérent contenant le résultat de
-	// la requête BDD
+	// Consultation des adhï¿½rents
+	// Fabrique et renvoie une liste d'objets adhï¿½rent contenant le rï¿½sultat de
+	// la requï¿½te BDD
 	public List<Adherent> consulterListeAdherents() throws MonException {
 		String mysql = "select * from adherent";
 		return consulterListeAdherents(mysql);
@@ -72,14 +79,14 @@ public class Service {
 			DialogueBd unDialogueBd = DialogueBd.getInstance();
 			rs =unDialogueBd.lecture(mysql);
 			while (index < rs.size()) {
-				// On crée un stage
+				// On crï¿½e un stage
 				Adherent unA = new Adherent();
 				// il faut redecouper la liste pour retrouver les lignes
 				unA.setIdAdherent(Integer.parseInt(rs.get(index + 0).toString()));
 				unA.setNomAdherent(rs.get(index + 1).toString());
 				unA.setPrenomAdherent(rs.get(index + 2).toString());
 				unA.setVilleAdherent(rs.get(index + 3).toString());
-				// On incrémente tous les 3 champs
+				// On incrï¿½mente tous les 3 champs
 				index = index + 4;
 				mesAdherents.add(unA);
 			}
@@ -118,7 +125,7 @@ public class Service {
 					uneOeuvre.setEtatOeuvrevente(rs.get(2).toString());
 					uneOeuvre.setPrixOeuvrevente(Float.parseFloat(rs.get(3).toString()));
 					int num = Integer.parseInt(rs.get(4).toString());
-					// On appelle la recherche d'un propriétaire
+					// On appelle la recherche d'un propriï¿½taire
 					uneOeuvre.setProprietaire(rechercherProprietaire(num));
 				}
 		} 

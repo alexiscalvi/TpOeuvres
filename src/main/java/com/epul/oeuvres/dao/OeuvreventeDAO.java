@@ -10,97 +10,113 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Florian on 29/03/2017.
- */
 public class OeuvreventeDAO extends DAO{
 
+    private Oeuvrevente buildDomainObject(ResultSet ajout) throws SQLException, MonException {
+        Oeuvrevente oeuvrevente = new Oeuvrevente();
+        oeuvrevente.setIdOeuvrevente( ajout.getInt( "id_oeuvrevente" ) );
+        oeuvrevente.setTitreOeuvrevente( ajout.getString( "titre_oeuvrevente" ) );
+        oeuvrevente.setEtatOeuvrevente(ajout.getString("etat_oeuvrevente"));
+        oeuvrevente.setPrixOeuvrevente(ajout.getFloat("prix_oeuvrevente"));
+        oeuvrevente.setProprietaire(new ProprietaireDAO().get(ajout.getInt("id_proprietaire")));
+        return oeuvrevente;
+    }
 
-    public void insert(Oeuvrevente oeuvrevente) {
+    /*
+    ajout d'oeuvre vente dans la db
+     */
+
+    public boolean add(Oeuvrevente oeuvreVente) {
         try {
             String query = "insert into oeuvrevente (titre_oeuvrevente, etat_oeuvrevente, prix_oeuvrevente, id_proprietaire) values (?,?,?,?)";
-            PreparedStatement preparedStatement = conn.prepareStatement( query );
-            preparedStatement.setString( 1, oeuvrevente.getTitreOeuvrevente());
-            preparedStatement.setString( 2, oeuvrevente.getEtatOeuvrevente());
-            preparedStatement.setFloat( 3, oeuvrevente.getPrixOeuvrevente());
-            preparedStatement.setInt( 4, oeuvrevente.getProprietaire().getIdProprietaire());
-            preparedStatement.executeUpdate();
-            preparedStatement.close();
+            PreparedStatement ps = connection.prepareStatement( query );
+            ps.setString( 1, oeuvreVente.getTitreOeuvrevente());
+            ps.setString( 2, oeuvreVente.getEtatOeuvrevente());
+            ps.setFloat( 3, oeuvreVente.getPrixOeuvrevente());
+            ps.setInt( 4, oeuvreVente.getProprietaire().getIdProprietaire());
+            ps.executeUpdate();
+            ps.close();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return false;
     }
 
-    public void delete( int id ) {
+    /*
+    suppression
+     */
+    public boolean delete( int idOeuvreVente ) {
         try {
-            new ReservationDAO().deleteAllByOeuvrevente(id);
+            /*
+            On supprime l'eventuelle reservation sur cette oeuvre
+             */
+            new ReservationDAO().delete(idOeuvreVente);
+
             String query = "delete from oeuvrevente where id_oeuvrevente=?";
-            PreparedStatement preparedStatement = conn.prepareStatement(query);
-            preparedStatement.setInt(1, id);
-            preparedStatement.executeUpdate();
-            preparedStatement.close();
+            PreparedStatement ps = connection.prepareStatement(query);
+            ps.setInt(1, idOeuvreVente);
+            ps.executeUpdate();
+            ps.close();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return false;
     }
 
-    public void updateOeuvrevente( Oeuvrevente oeuvrevente ) {
+
+    public boolean update( Oeuvrevente oeuvreVente ) {
         try {
             String query = "update oeuvrevente set titre_oeuvrevente=?, etat_oeuvrevente=?, prix_oeuvrevente=?, id_proprietaire=? where id_oeuvrevente=?";
-            PreparedStatement preparedStatement = conn.prepareStatement( query );
-            preparedStatement.setString( 1, oeuvrevente.getTitreOeuvrevente());
-            preparedStatement.setString( 2, oeuvrevente.getEtatOeuvrevente());
-            preparedStatement.setFloat( 3, oeuvrevente.getPrixOeuvrevente());
-            preparedStatement.setInt( 4, oeuvrevente.getProprietaire().getIdProprietaire());
-            preparedStatement.setInt( 5, oeuvrevente.getIdOeuvrevente());
-            preparedStatement.executeUpdate();
-            preparedStatement.close();
+            PreparedStatement ps = connection.prepareStatement( query );
+            ps.setString( 1, oeuvreVente.getTitreOeuvrevente());
+            ps.setString( 2, oeuvreVente.getEtatOeuvrevente());
+            ps.setFloat( 3, oeuvreVente.getPrixOeuvrevente());
+            ps.setInt( 4, oeuvreVente.getProprietaire().getIdProprietaire());
+            ps.setInt( 5, oeuvreVente.getIdOeuvrevente());
+            ps.executeUpdate();
+            ps.close();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return false;
     }
 
-    public List<Oeuvrevente> findAll() {
-        List<Oeuvrevente> oeuvreventes = new ArrayList<Oeuvrevente>();
+    public List<Oeuvrevente> get() {
+        List<Oeuvrevente> listOeuvresVente = new ArrayList<Oeuvrevente>();
         try {
-            Statement statement = conn.createStatement();
-            ResultSet resultSet = statement.executeQuery( "select * from oeuvrevente" );
-            while( resultSet.next() ) {
-                oeuvreventes.add(this.buildDomainObject(resultSet));
+            Statement statement = connection.createStatement();
+            ResultSet res = statement.executeQuery( "select * from oeuvrevente" );
+            while( res.next() ) {
+                listOeuvresVente.add(this.buildDomainObject(res));
             }
-            resultSet.close();
+            res.close();
             statement.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return oeuvreventes;
+        return listOeuvresVente;
     }
 
-    public Oeuvrevente find(int id) {
-        Oeuvrevente oeuvrevente = null;
+    public Oeuvrevente get(int idOeuvreVente) {
+        Oeuvrevente oeuvreVente = null;
         try {
             String query = "select * from oeuvrevente where id_oeuvrevente=?";
-            PreparedStatement preparedStatement = conn.prepareStatement( query );
-            preparedStatement.setInt( 1, id);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            if (resultSet.next()) {
-                oeuvrevente = this.buildDomainObject(resultSet);
+            PreparedStatement ps = connection.prepareStatement( query );
+            ps.setInt( 1, idOeuvreVente);
+            ResultSet res = ps.executeQuery();
+            if (res.first()) {
+                oeuvreVente = this.buildDomainObject(res);
             }
-            preparedStatement.close();
-            resultSet.close();
+            ps.close();
+            res.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return oeuvrevente;
+        return oeuvreVente;
     }
 
-    private Oeuvrevente buildDomainObject(ResultSet row) throws SQLException, MonException {
-        Oeuvrevente oeuvrevente = new Oeuvrevente();
-        oeuvrevente.setIdOeuvrevente( row.getInt( "id_oeuvrevente" ) );
-        oeuvrevente.setTitreOeuvrevente( row.getString( "titre_oeuvrevente" ) );
-        oeuvrevente.setEtatOeuvrevente(row.getString("etat_oeuvrevente"));
-        oeuvrevente.setPrixOeuvrevente(row.getFloat("prix_oeuvrevente"));
-        oeuvrevente.setProprietaire(new ProprietaireDAO().find(row.getInt("id_proprietaire")));
-        return oeuvrevente;
-    }
+
 }

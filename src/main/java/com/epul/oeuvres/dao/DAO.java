@@ -5,17 +5,15 @@ import com.epul.oeuvres.persistance.Connexion;
 
 import java.sql.Connection;
 
-/**
- * Created by Alexis on 27/03/2017.
- */
+
 abstract class DAO {
 
-    static Connection conn;
+    static Connection connection;
 
     public DAO() {
         try {
-            if (conn == null) {
-                conn = Connexion.getInstance().getConnexion();
+            if (connection == null) {
+                connection = Connexion.getInstance().getConnexion();
             }
         } catch (MonException e) {
             e.printStackTrace();

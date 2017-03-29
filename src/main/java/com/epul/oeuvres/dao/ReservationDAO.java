@@ -9,61 +9,77 @@ import java.sql.SQLException;
 
 import com.epul.oeuvres.metier.Reservation;
 
-/**
- * Created by Alexis on 29/03/2017.
- */
+
 public class ReservationDAO extends DAO{
 
+    /*
+        on peut reserver une oeuvre uniquement si elle n'a pas encore été réservée.
+     */
 
-    public int insert(Reservation reservation) {
+    public boolean exist (int idOeuvre, int idAdherent) {
+        boolean alreadyExist = false;
+        try {
+            String query = "select * from reservation where id_oeuvrevente=? and id_adherent=?";
+            PreparedStatement ps = connection.prepareStatement( query );
+            ps.setInt( 1, idOeuvre);
+            ps.setInt( 2, idAdherent);
+            ResultSet res = ps.executeQuery();
 
-        // Check if the reservation already exists
+            if (res.first()) {
+                alreadyExist = true;
+            }
+            ps.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return alreadyExist;
+    }
+
+
+    /*
+    Methode d'ajout d'une reservation
+     */
+    public boolean add(Reservation reservation) {
+
+        /*
+        On verifie si la reservation existe
+         */
+
         if (this.exist(reservation.getOeuvrevente().getIdOeuvrevente(), reservation.getAdherent().getIdAdherent())) {
-            return -1;
+            return false;
         }
 
         try {
             String query = "insert into reservation (statut, id_oeuvrevente, id_adherent, date_reservation) values (?,?,?,?)";
-            PreparedStatement preparedStatement = conn.prepareStatement( query );
-            preparedStatement.setString( 1, reservation.getStatut());
-            preparedStatement.setInt( 2, reservation.getOeuvrevente().getIdOeuvrevente());
-            preparedStatement.setInt( 3, reservation.getAdherent().getIdAdherent());
-            preparedStatement.setDate( 4, (Date) reservation.getDate());
-            preparedStatement.executeUpdate();
-            preparedStatement.close();
+            PreparedStatement ps = connection.prepareStatement( query );
+            ps.setString( 1, reservation.getStatut());
+            ps.setInt( 2, reservation.getOeuvrevente().getIdOeuvrevente());
+            ps.setInt( 3, reservation.getAdherent().getIdAdherent());
+            ps.setDate( 4, (Date) reservation.getDate());
+            ps.executeUpdate();
+            ps.close();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return 0;
+        return false;
     }
 
-    public boolean exist (int idOeuvrevente, int idAdherent) {
-        Boolean reservationAlreadyDone = false;
-        try {
-            String query = "select * from reservation where id_oeuvrevente=? and id_adherent=?";
-            PreparedStatement preparedStatement = conn.prepareStatement( query );
-            preparedStatement.setInt( 1, idOeuvrevente);
-            preparedStatement.setInt( 2, idAdherent);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            if (resultSet.next()) {
-                reservationAlreadyDone = true;
-            }
-            preparedStatement.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return reservationAlreadyDone;
-    }
+/*
+    suppression de la reservation
+ */
 
-    public void deleteAllByOeuvrevente(int id) {
+    public boolean delete(int idOeuvreVente) {
         try {
             String query = "delete from reservation where id_oeuvrevente=?";
-            PreparedStatement preparedStatement = conn.prepareStatement(query);
-            preparedStatement.setInt(1, id);
-            preparedStatement.executeUpdate();
-            preparedStatement.close();
+            PreparedStatement ps = connection.prepareStatement(query);
+            ps.setInt(1, idOeuvreVente);
+            ps.executeUpdate();
+            ps.close();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return false;
     }
 }
