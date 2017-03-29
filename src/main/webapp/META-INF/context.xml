@@ -9,7 +9,7 @@
             username="userepul"
             password="epul"
             driverClassName="com.mysql.jdbc.Driver"
-            url="jdbc:mysql://localhost:3306/baseoeuvre"
+            url="jdbc:mysql://localhost:3306/tpoeuvres"
             maxActive="8"
             maxIdle="4"/>
 </Context>
