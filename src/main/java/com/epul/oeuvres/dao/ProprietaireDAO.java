@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Gaetan on 06/03/2017.
+ * Created by Florian on 29/03/2017.
  */
 public class ProprietaireDAO extends DAO {
 

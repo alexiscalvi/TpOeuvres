@@ -10,7 +10,7 @@ import com.epul.oeuvres.metier.Adherent;
 import com.epul.oeuvres.meserreurs.MonException;
 
 /**
- * Created by Gaetan on 25/02/2017.
+ * Created by Lucas on 25/03/2017.
  */
 public class AdherentDAO extends DAO{
 

@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import com.epul.oeuvres.metier.Reservation;
 
 /**
- * Created by Gaetan on 25/02/2017.
+ * Created by Alexis on 29/03/2017.
  */
 public class ReservationDAO extends DAO{
 

@@ -6,7 +6,7 @@ import com.epul.oeuvres.persistance.Connexion;
 import java.sql.Connection;
 
 /**
- * Created by Gaetan on 01/03/2017.
+ * Created by Alexis on 27/03/2017.
  */
 abstract class DAO {
 

@@ -9,9 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-///
-/// Les m�thode du contr�leur r�pondent � des sollicitations
-/// des pages JSP
 
 @Controller
 @RequestMapping("/")
