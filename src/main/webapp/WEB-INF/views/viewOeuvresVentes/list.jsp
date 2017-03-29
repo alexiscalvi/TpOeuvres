@@ -41,12 +41,12 @@
                     <a href="#" class="disabled btn btn-info" role="button"><span
                             class="glyphicon glyphicon-shopping-cart"></span></a>
                 </c:if>
-                <a href="detailVente?id=${oeuvre.idOeuvrevente}"
-                   class="btn btn-warning" role="button"><span class="glyphicon glyphicon-eye-open"></span></a>
-                <a href="editVente?id=${oeuvre.idOeuvrevente}"
-                   class="btn btn-success" role="button"><span class="glyphicon glyphicon-pencil"></span></a>
-                <a href="deleteVente?id=${oeuvre.idOeuvrevente}"
-                   class="btn btn-danger" role="button"><span class="glyphicon glyphicon-remove"></span></a>
+                <a href="detailVente?id=${oeuvre.idOeuvrevente}" role="button"><span
+                        class="glyphicon glyphicon-eye-open"></span></a>
+                <a href="editVente?id=${oeuvre.idOeuvrevente}" role="button"><span
+                        class="glyphicon glyphicon-pencil"></span></a>
+                <a href="deleteVente?id=${oeuvre.idOeuvrevente}" role="button"><span
+                        class="glyphicon glyphicon-remove"></span></a>
             </td>
         </tr>
     </c:forEach>

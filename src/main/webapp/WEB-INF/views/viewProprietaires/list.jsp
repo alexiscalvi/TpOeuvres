@@ -21,10 +21,8 @@
             <td>${proprio.nomProprietaire}</td>
             <td>${proprio.prenomProprietaire}</td>
             <td>
-                <a href="edit?id=${proprio.idProprietaire}"
-                   class="btn btn-info"><span class="glyphicon glyphicon-pencil"></span></a>
-                <a href="delete?id=${proprio.idProprietaire}"
-                   class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></a>
+                <a href="edit?id=${proprio.idProprietaire}" ><span class="glyphicon glyphicon-pencil"></span></a>
+                <a href="delete?id=${proprio.idProprietaire}" ><span class="glyphicon glyphicon-remove"></span></a>
             </td>
         </tr>
     </c:forEach>

@@ -27,12 +27,12 @@
             <td>${oeuvre.titreOeuvrepret}</td>
             <td>${oeuvre.proprietaire.nomComplet}</td>
             <td>
-                <a href="detailPret?id=${oeuvre.idOeuvrepret}"
-                   class="btn btn-warning" role="button"><span class="glyphicon glyphicon-eye-open"></span></a>
-                <a href="editPret?id=${oeuvre.idOeuvrepret}"
-                   class="btn btn-success" role="button"><span class="glyphicon glyphicon-pencil"></span></a>
-                <a href="deletePret?id=${oeuvre.idOeuvrepret}"
-                   class="btn btn-danger" role="button"><span class="glyphicon glyphicon-remove"></span></a>
+                <a href="detailPret?id=${oeuvre.idOeuvrepret}" role="button"><span
+                        class="glyphicon glyphicon-eye-open"></span></a>
+                <a href="editPret?id=${oeuvre.idOeuvrepret}" role="button"><span
+                        class="glyphicon glyphicon-pencil"></span></a>
+                <a href="deletePret?id=${oeuvre.idOeuvrepret}" role="button"><span
+                        class="glyphicon glyphicon-remove"></span></a>
             </td>
         </tr>
     </c:forEach>
