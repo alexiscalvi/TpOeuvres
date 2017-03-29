@@ -7,7 +7,7 @@
     Liste des oeuvres
 </h1>
 
-<a class="btn btn-info" href="add">
+<a class="btn btn-info" href="/oeuvre/addVente">
     Ajout d'une nouvelle Oeuvre
 </a>
 <table id="table_oeuvres">

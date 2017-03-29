@@ -10,9 +10,7 @@
 //import javax.servlet.http.HttpServletRequest;
 //import javax.servlet.http.HttpServletResponse;
 //
-///**
-// * Created by Lucas on 29/03/2017.
-// */
+
 //@RequestMapping("user/")
 //@Controller
 //public class AdherentController {

@@ -5,7 +5,7 @@
 </jsp:include>
 
 <h1>Ajout d'une oeuvre de prêt</h1>
-<form class="form-horizontal" name='identification' method="post" action="add">
+<form class="form-horizontal" name='identification' method="post" action="/oeuvre/addPret">
     <div class="form-group">
         <label for="titre">Titre de l'oeuvre :</label>
             <input type="text" class="form-control" id="titre" name="titre" placeholder="Entrez le titre" required>

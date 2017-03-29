@@ -7,7 +7,7 @@
 
 <h1>Catalogue des oeuvres de prêt</h1>
 <br>
-<a class="btn btn-info" href="add">
+<a class="btn btn-info" href="/oeuvre/addPret">
     <span class="glyphicon glyphicon-plus"></span> Ajout d'une oeuvre
 </a>
 

@@ -5,7 +5,7 @@
 </jsp:include>
 
 <h1>Ajout d'une oeuvre</h1>
-<form class="form-horizontal" name='identification' method="post" action="add">
+<form class="form-horizontal" name='identification' method="post" action="/oeuvre/addVente">
     <div class="form-group">
         <label class="control-label col-sm-2">Titre de l'oeuvre :</label>
         <div class="col-sm-10">

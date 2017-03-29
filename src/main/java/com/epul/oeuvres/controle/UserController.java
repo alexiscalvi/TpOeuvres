@@ -27,7 +27,7 @@ public class UserController {
 
     @RequestMapping(value = "proprio")
     public ModelAndView proprioAction(HttpServletRequest request, HttpServletResponse response) {
-        request.setAttribute("proprios", proprietaireDAO.findAll());
+        request.setAttribute("proprios", proprietaireDAO.get());
         return new ModelAndView("viewProprios/list");
     }
 
@@ -35,7 +35,7 @@ public class UserController {
     public ModelAndView deleteProprioAction(HttpServletRequest request, HttpServletResponse response) {
         int id = Integer.parseInt(request.getParameter("id"));
         proprietaireDAO.delete(id);
-        request.setAttribute("proprios", proprietaireDAO.findAll());
+        request.setAttribute("proprios", proprietaireDAO.get());
         return new ModelAndView("viewProprios/list");
     }
 
@@ -47,8 +47,8 @@ public class UserController {
         if (nom != null && prenom != null) {
             proprio.setPrenomProprietaire(prenom);
             proprio.setNomProprietaire(nom);
-            proprietaireDAO.insert(proprio);
-            request.setAttribute("proprios", proprietaireDAO.findAll());
+            proprietaireDAO.add(proprio);
+            request.setAttribute("proprios", proprietaireDAO.get());
             return new ModelAndView("viewProprios/list");
         } else {
             return new ModelAndView("viewProprios/add");
@@ -58,14 +58,14 @@ public class UserController {
     @RequestMapping(value = "editProprio")
     public ModelAndView editProprioAction(HttpServletRequest request, HttpServletResponse response) {
         int id = Integer.parseInt(request.getParameter("id"));
-        Proprietaire proprio = proprietaireDAO.find(id);
+        Proprietaire proprio = proprietaireDAO.get(id);
         String prenom = request.getParameter("prenom");
         String nom = request.getParameter("nom");
         if (nom != null && prenom != null) {
             proprio.setPrenomProprietaire(prenom);
             proprio.setNomProprietaire(nom);
             proprietaireDAO.update(proprio);
-            request.setAttribute("proprios", proprietaireDAO.findAll());
+            request.setAttribute("proprios", proprietaireDAO.get());
             return new ModelAndView("viewProprios/list");
         } else {
             request.setAttribute("proprio", proprio);
@@ -76,7 +76,7 @@ public class UserController {
 
     @RequestMapping(value = "adherent", method = RequestMethod.GET)
     public ModelAndView adherentAction(HttpServletRequest request, HttpServletResponse response) {
-        request.setAttribute("adherents", adherentDAO.findAll());
+        request.setAttribute("adherents", adherentDAO.get());
         return new ModelAndView("viewAdherents/list");
     }
 
@@ -90,7 +90,7 @@ public class UserController {
     @RequestMapping(value = "editAdherent")
     public ModelAndView editAdherentAction(HttpServletRequest request, HttpServletResponse response) {
         int idAdherent = Integer.parseInt(request.getParameter("id"));
-        Adherent adherent = adherentDAO.find(idAdherent);
+        Adherent adherent = adherentDAO.get(idAdherent);
         String prenom = request.getParameter("prenom");
         String nom = request.getParameter("nom");
         String ville = request.getParameter("ville");
@@ -118,7 +118,7 @@ public class UserController {
             adherent.setPrenomAdherent(prenom);
             adherent.setNomAdherent(nom);
             adherent.setVilleAdherent(ville);
-            adherentDAO.insert(adherent);
+            adherentDAO.add(adherent);
             return adherentAction(request, response);
         } else {
             return new ModelAndView("viewAdherents/add");
