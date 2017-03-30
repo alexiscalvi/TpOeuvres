@@ -7,7 +7,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import com.epul.oeuvres.metier.Adherent;
-import com.epul.oeuvres.meserreurs.MonException;
+import com.epul.oeuvres.exceptions.Exception1;
 
 public class AdherentDAO extends DAO{
 
@@ -15,7 +15,7 @@ public class AdherentDAO extends DAO{
     builder
      */
 
-    private Adherent buildDomainObject(ResultSet ajout) throws SQLException, MonException {
+    private Adherent buildDomainObject(ResultSet ajout) throws SQLException, Exception1 {
         Adherent adherent = new Adherent();
         adherent.setIdAdherent( ajout.getInt( "id_adherent" ) );
         adherent.setNomAdherent( ajout.getString( "nom_adherent" ) );

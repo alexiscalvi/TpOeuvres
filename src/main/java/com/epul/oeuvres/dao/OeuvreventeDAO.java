@@ -1,6 +1,6 @@
 package com.epul.oeuvres.dao;
 
-import com.epul.oeuvres.meserreurs.MonException;
+import com.epul.oeuvres.exceptions.Exception1;
 import com.epul.oeuvres.metier.Oeuvrevente;
 
 import java.sql.PreparedStatement;
@@ -16,7 +16,7 @@ public class OeuvreventeDAO extends DAO{
     builder
      */
 
-    private Oeuvrevente buildDomainObject(ResultSet ajout) throws SQLException, MonException {
+    private Oeuvrevente buildDomainObject(ResultSet ajout) throws SQLException, Exception1 {
         Oeuvrevente oeuvrevente = new Oeuvrevente();
         oeuvrevente.setIdOeuvrevente( ajout.getInt( "id_oeuvrevente" ) );
         oeuvrevente.setTitreOeuvrevente( ajout.getString( "titre_oeuvrevente" ) );

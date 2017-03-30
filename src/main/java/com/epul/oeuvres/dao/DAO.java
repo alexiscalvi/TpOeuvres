@@ -1,10 +1,8 @@
 package com.epul.oeuvres.dao;
 
-import com.epul.oeuvres.meserreurs.MonException;
+import com.epul.oeuvres.exceptions.Exception1;
 import com.epul.oeuvres.persistance.Connexion;
-
 import java.sql.Connection;
-
 
 abstract class DAO {
 
@@ -15,7 +13,7 @@ abstract class DAO {
             if (connection == null) {
                 connection = Connexion.getInstance().getConnexion();
             }
-        } catch (MonException e) {
+        } catch (Exception1 e) {
             e.printStackTrace();
         }
     }

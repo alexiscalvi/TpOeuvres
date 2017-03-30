@@ -16,14 +16,6 @@ public class Pret implements Serializable {
 	private Oeuvrepret oeuvrepret;
 	private Adherent adherent;
 
-	
-	public Pret( Date date, int duree, Oeuvrepret oeuvrepret, Adherent adherent) {
-		super();
-		this.date = date;
-		this.duree = duree;
-		this.oeuvrepret = oeuvrepret;
-		this.adherent = adherent;
-	}
 
 	public Pret() {
 	}

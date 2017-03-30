@@ -1,8 +1,7 @@
 package com.epul.oeuvres.dao;
 
-import com.epul.oeuvres.meserreurs.MonException;
+import com.epul.oeuvres.exceptions.Exception1;
 import com.epul.oeuvres.metier.Oeuvrepret;
-import com.epul.oeuvres.dao.ProprietaireDAO;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,7 +16,7 @@ public class OeuvrepretDAO extends DAO{
     builder
      */
 
-    private Oeuvrepret buildDomainObject(ResultSet row) throws SQLException, MonException {
+    private Oeuvrepret buildDomainObject(ResultSet row) throws SQLException, Exception1 {
         Oeuvrepret oeuvrepret = new Oeuvrepret();
         oeuvrepret.setIdOeuvrepret( row.getInt( "id_oeuvrepret" ) );
         oeuvrepret.setTitreOeuvrepret( row.getString( "titre_oeuvrepret" ) );
@@ -44,9 +43,8 @@ public class OeuvrepretDAO extends DAO{
     }
 
     /*
-    Suppression de l'element dans la db
+     *Suppression de l'element dans la db
      */
-
     public boolean delete( int idOeuvrePret ) {
         try {
             String query = "delete from oeuvrepret where id_oeuvrepret=?";

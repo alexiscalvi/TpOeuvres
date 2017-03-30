@@ -31,7 +31,7 @@
             <td>${oeuvre.proprietaire.nomComplet}</td>
             <td>
                 <c:if test="${oeuvre.etatOeuvrevente == 'L'}">
-                    <a href="#reservationModal" data-toggle="modal" data-id="${oeuvre.idOeuvrevente}"
+                    <a data-id="${oeuvre.idOeuvrevente}"
                        class="btn btn-info" role="button"><span
                             class="glyphicon glyphicon-shopping-cart"></span></a>
                 </c:if>

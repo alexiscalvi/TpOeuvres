@@ -1,3 +1,7 @@
+GARIN Lucas  
+CALVI Alexis  
+DE lA COMBLE Florian
+
 # GestionOeuvresSpring
 
 ## Installation

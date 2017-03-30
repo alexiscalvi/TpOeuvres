@@ -1,6 +1,6 @@
 package com.epul.oeuvres.dao;
 
-import com.epul.oeuvres.meserreurs.MonException;
+import com.epul.oeuvres.exceptions.Exception1;
 import com.epul.oeuvres.metier.Proprietaire;
 
 import java.sql.PreparedStatement;
@@ -17,7 +17,7 @@ public class ProprietaireDAO extends DAO {
     builder
      */
 
-    private Proprietaire buildDomainObject(ResultSet ajout) throws SQLException, MonException {
+    private Proprietaire buildDomainObject(ResultSet ajout) throws SQLException, Exception1 {
         Proprietaire proprietaire = new Proprietaire();
         proprietaire.setIdProprietaire( ajout.getInt( "id_proprietaire" ) );
         proprietaire.setNomProprietaire( ajout.getString( "nom_proprietaire" ) );

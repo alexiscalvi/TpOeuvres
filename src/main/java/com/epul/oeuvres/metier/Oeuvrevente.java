@@ -16,17 +16,6 @@ public class Oeuvrevente implements Serializable {
 	private String titreOeuvrevente;
 	private Proprietaire proprietaire;
 
-
-	public Oeuvrevente(int idOeuvrevente, String etatOeuvrevente, float prixOeuvrevente, String titreOeuvrevente,
-			Proprietaire proprietaire) {
-		super();
-		this.idOeuvrevente = idOeuvrevente;
-		this.etatOeuvrevente = etatOeuvrevente;
-		this.prixOeuvrevente = prixOeuvrevente;
-		this.titreOeuvrevente = titreOeuvrevente;
-		this.proprietaire = proprietaire;
-	}
-
 	public Oeuvrevente() {
 	}
 
